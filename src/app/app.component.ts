@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { CountriesService } from './services/countries.service';
+import { CountriesService } from './core/services/countries/countries.service';
+
+import Country from 'src/app/core/models/country';
+import Region from './core/models/region';
+import { RegionsService } from './core/services/regions/regions.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +12,25 @@ import { CountriesService } from './services/countries.service';
 })
 
 export class AppComponent {
-  constructor(private countriesService: CountriesService) {}
+  constructor(private countriesService: CountriesService, private regionsService: RegionsService) {}
 
-  public countries: any;
+  public countries: Country[] = [];
+  public regions: Region[] = [];
 
   ngOnInit() {
     this.countriesService.getCountries().subscribe((data) => {
-      console.log(data);
-      this.countries = data;
+      data.forEach((country: Country) => {
+        this.countries.push(country);
+      });
     });
+
+    this.regionsService.getRegions().subscribe((data) => {
+      data.forEach((region: Region) => {
+        this.regions.push(region);
+      });
+    });
+
+    console.log(this.countries);
+    console.log(this.regions);
   }
 }

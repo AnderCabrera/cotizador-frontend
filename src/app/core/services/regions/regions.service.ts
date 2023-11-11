@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 
-export class CountriesService {
-  private countries_api_url = '/api/countries';
+export class RegionsService {
+  private regions_api_url = '/api/regions/';
 
   constructor(private http: HttpClient) { }
 
-  public getCountries(): Observable<any> {
-    return this.http.get(this.countries_api_url);
+  public getRegions(): Observable<any> {
+    return this.http.get(this.regions_api_url);
   }
 }

@@ -14,7 +14,23 @@
 
     <label for="country_origin">Pais de origen</label>
     <select name="" id="country_origin">
-      <option value=""></option>
+      <option *ngFor="let country of countries" value="{{ country.country }}">
+        {{ country.country }}
+      </option>
+    </select>
+
+    <label for="country_destination">Pais de destino</label>
+    <select name="" id="country_destination">
+      <option *ngFor="let country of countries" value="{{ country.country }}">
+        {{ country.country }}
+      </option>
+    </select>
+
+    <label for="country_region">Región pais destino</label>
+    <select name="" id="country_region">
+      <option *ngFor="let region of regions" value="{{ region.region }}">
+        {{ region.region }}
+      </option>
     </select>
 
     <button type="submit">Enviar</button>
