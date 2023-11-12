@@ -1,4 +1,4 @@
 export default interface Region {
-  id?: number,
+  idRegion?: number,
   region: string,
 }

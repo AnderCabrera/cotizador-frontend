@@ -1,5 +1,5 @@
 <div class="main">
-  <form action="" method="get" class="form">
+  <form action="/api/countries/fee" method="get" class="form">
     <h3>Información de envío</h3>
 
     <div class="shipment-container">
@@ -7,13 +7,13 @@
         <!-- Peso -->
         <div class="form-group">
           <label for="name"><span>*</span> Peso en <b>lb</b></label>
-          <input required type="number" class="form-control" id="peso" />
+          <input required type="number" class="form-control" id="peso" name="peso" />
         </div>
 
         <!-- Ancho -->
         <div class="form-group">
           <label for="name"><span>*</span> Ancho en <b>cm</b></label>
-          <input required type="number" class="form-control" id="ancho" />
+          <input required type="number" class="form-control" id="ancho" name="ancho" />
         </div>
       </div>
 
@@ -21,13 +21,13 @@
         <!-- Alto -->
         <div class="form-group">
           <label for="name"><span>*</span> Alto en <b>cm</b></label>
-          <input required type="number" class="form-control" id="alto" />
+          <input required type="number" class="form-control" id="alto" name="alto" />
         </div>
 
         <!-- Largo -->
         <div class="form-group">
           <label for="name"><span>*</span> Largo en <b>cm</b></label>
-          <input required type="number" class="form-control" id="largo" />
+          <input required type="number" class="form-control" id="largo" name="largo" />
         </div>
       </div>
     </div>
@@ -39,10 +39,10 @@
       <!-- País de destino -->
       <div class="form-group">
         <label for="name"><span>*</span> País</label>
-        <select name="" id="">
+        <select name="paisDestino">
           <option
             *ngFor="let country of countries"
-            value="{{ country.country }}"
+            value="{{ country.id }}"
             aria-required="true"
           >
             {{ country.country }}
@@ -53,10 +53,10 @@
       <!-- Región -->
       <div class="form-group">
         <label for="name"><span>*</span> Región</label>
-        <select name="" id="">
+        <select name="region">
           <option
             *ngFor="let region of regions"
-            value="{{ region.region }}"
+            value="{{ region.idRegion }}"
             aria-required="true"
           >
             {{ region.region }}
