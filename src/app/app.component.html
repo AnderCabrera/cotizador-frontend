@@ -1,38 +1,71 @@
 <div class="main">
-  <form action="http://localhost:8080/api/red" method="GET">
-    <label for="weight">Peso</label>
-    <input type="number" name="weight" id="weight" />
+  <form action="" method="get" class="form">
+    <h3>Información de envío</h3>
 
-    <label for="width">Ancho</label>
-    <input type="number" name="width" id="width" />
+    <div class="shipment-container">
+      <div>
+        <!-- Peso -->
+        <div class="form-group">
+          <label for="name"><span>*</span> Peso en <b>lb</b></label>
+          <input required type="number" class="form-control" id="peso" />
+        </div>
 
-    <label for="height">Alto</label>
-    <input type="number" name="height" id="height" />
+        <!-- Ancho -->
+        <div class="form-group">
+          <label for="name"><span>*</span> Ancho en <b>cm</b></label>
+          <input required type="number" class="form-control" id="ancho" />
+        </div>
+      </div>
 
-    <label for="length">Largo</label>
-    <input type="number" name="length" id="length" />
+      <div>
+        <!-- Alto -->
+        <div class="form-group">
+          <label for="name"><span>*</span> Alto en <b>cm</b></label>
+          <input required type="number" class="form-control" id="alto" />
+        </div>
 
-    <label for="country_origin">Pais de origen</label>
-    <select name="" id="country_origin">
-      <option *ngFor="let country of countries" value="{{ country.country }}">
-        {{ country.country }}
-      </option>
-    </select>
+        <!-- Largo -->
+        <div class="form-group">
+          <label for="name"><span>*</span> Largo en <b>cm</b></label>
+          <input required type="number" class="form-control" id="largo" />
+        </div>
+      </div>
+    </div>
 
-    <label for="country_destination">Pais de destino</label>
-    <select name="" id="country_destination">
-      <option *ngFor="let country of countries" value="{{ country.country }}">
-        {{ country.country }}
-      </option>
-    </select>
+    <!-- Información de destino -->
+    <h3>Información de destino</h3>
 
-    <label for="country_region">Región pais destino</label>
-    <select name="" id="country_region">
-      <option *ngFor="let region of regions" value="{{ region.region }}">
-        {{ region.region }}
-      </option>
-    </select>
+    <div class="destination-container">
+      <!-- País de destino -->
+      <div class="form-group">
+        <label for="name"><span>*</span> País</label>
+        <select name="" id="">
+          <option
+            *ngFor="let country of countries"
+            value="{{ country.country }}"
+            aria-required="true"
+          >
+            {{ country.country }}
+          </option>
+        </select>
+      </div>
 
-    <button type="submit">Enviar</button>
+      <!-- Región -->
+      <div class="form-group">
+        <label for="name"><span>*</span> Región</label>
+        <select name="" id="">
+          <option
+            *ngFor="let region of regions"
+            value="{{ region.region }}"
+            aria-required="true"
+          >
+            {{ region.region }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Button -->
+    <button type="submit" class="btn btn-primary">Cotizar</button>
   </form>
 </div>
