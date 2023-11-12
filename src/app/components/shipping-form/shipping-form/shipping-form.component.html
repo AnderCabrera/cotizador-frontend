@@ -1,0 +1,63 @@
+<div class="main">
+  <form [formGroup]="myForm" class="form">
+    <div class="shipment-container">
+      <h1>Información de envío</h1>
+      <ng-container
+        *ngFor="
+          let fieldsArr of [
+            [
+              { name: 'Peso', unity: 'lb', controlName: 'weight' },
+              { name: 'Ancho', unity: 'cm', controlName: 'width' }
+            ],
+            [
+              { name: 'Alto', unity: 'cm', controlName: 'height' },
+              { name: 'Largo', unity: 'cm', controlName: 'length' }
+            ]
+          ]
+        "
+      >
+        <ng-container *ngFor="let field of fieldsArr">
+          <div class="form-item">
+            <label for="{{ field.controlName }}">
+              <span>*</span> {{ field.name }} en <b>{{ field.unity }}</b>
+            </label>
+
+            <input
+              type="number"
+              [formControlName]="field.controlName"
+              [placeholder]="field.name"
+              id="{{ field.controlName }}"
+              class="form-item"
+              required
+              min="0.1"
+            />
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <h1>Información de destino</h1>
+    <div class="destination-container">
+      <div class="form-item">
+        <label><span>*</span> Pais</label>
+        <ng-select
+          [items]="countries | async"
+          bindLabel="country"
+          formControlName="idCountry"
+          required
+        />
+      </div>
+
+      <div class="form-item">
+        <label><span>*</span> Region</label>
+        <ng-select
+          [items]="regions | async"
+          bindLabel="region"
+          formControlName="idRegion"
+          required
+        />
+      </div>
+    </div>
+    <button (click)="getShipmentCost()">Cotizar</button>
+  </form>
+</div>

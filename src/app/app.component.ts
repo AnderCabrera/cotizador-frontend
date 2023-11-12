@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { CountriesService } from './core/services/countries/countries.service';
 
 import Country from 'src/app/core/models/country';
@@ -12,25 +12,12 @@ import { RegionsService } from './core/services/regions/regions.service';
 })
 
 export class AppComponent {
-  constructor(private countriesService: CountriesService, private regionsService: RegionsService) {}
-
-  public countries: Country[] = [];
-  public regions: Region[] = [];
+  cost!: number;
 
   ngOnInit() {
-    this.countriesService.getCountries().subscribe((data) => {
-      data.forEach((country: Country) => {
-        this.countries.push(country);
-      });
-    });
+  }
 
-    this.regionsService.getRegions().subscribe((data) => {
-      data.forEach((region: Region) => {
-        this.regions.push(region);
-      });
-    });
-
-    console.log(this.countries);
-    console.log(this.regions);
+  showCost(cost: number) {
+    this.cost = cost;
   }
 }

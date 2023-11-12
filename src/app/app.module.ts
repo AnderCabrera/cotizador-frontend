@@ -7,15 +7,24 @@ import { CountriesService } from './core/services/countries/countries.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RegionsService } from './core/services/regions/regions.service';
+import { ShippingFormComponent } from './components/shipping-form/shipping-form/shipping-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShippingFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgSelectModule,
+    SweetAlert2Module
   ],
   providers: [CountriesService, RegionsService],
   bootstrap: [AppComponent]

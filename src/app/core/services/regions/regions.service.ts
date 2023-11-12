@@ -1,18 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import Region from '../../models/region';
 @Injectable({
   providedIn: 'root'
 })
 
 export class RegionsService {
-  private regions_api_url = '/api/regions/';
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
-
-  public getRegions(): Observable<any> {
-    return this.http.get(this.regions_api_url);
+  public getRegions(): Observable<Region[]> {
+    return this.http.get<Region[]>(`/api/regions/`);
   }
 }
