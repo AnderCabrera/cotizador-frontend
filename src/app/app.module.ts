@@ -11,11 +11,15 @@ import { ShippingFormComponent } from './components/shipping-form/shipping-form/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { LoginComponent } from './components/login/login/login.component';
+import { RegisterComponent } from './components/register/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShippingFormComponent
+    ShippingFormComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
