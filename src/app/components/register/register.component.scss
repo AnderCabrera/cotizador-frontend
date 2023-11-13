@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .form {
+    display: grid;
+    width: 25%;
+
+    span {
+      color: red;
+    }
+
+    label {
+      font-size: 1em;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .form-title {
+      font-size: 2em;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .form-input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+      font-weight: 400;
+
+      &:focus {
+        outline: none;
+        border: 1px solid rgb(0, 244, 122);
+      }
+    }
+
+    .ng-select {
+      width: 100%;
+      margin-bottom: 25px;
+      border-radius: 5px;
+      font-size: 1em;
+      font-weight: 500;
+    }
+
+    .form-button {
+      justify-self: center;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      font-weight: 600;
+      background-color: #222;
+      color: white;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #333;
+      }
+
+      &:active {
+        background-color: #444;
+      }
+    }
+
+    .question {
+      font-size: 1em;
+      font-weight: 500;
+      margin-bottom: 10px;
+      text-align: center;
+
+      p {
+        color: red;
+        margin-bottom: 5px;
+      }
+
+      a {
+        color: rgb(64, 104, 224);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &:active {
+          color: rgb(4, 38, 139);
+        }
+      }
+    }
+  }
+}

@@ -1,34 +1,46 @@
-<form [formGroup]="myForm">
-  <ng-container
-    *ngFor="
-      let fieldsArr of [
-        [
-          { name: 'Username', controlName: 'username', type: 'text' },
-          { name: 'Password', controlName: 'password', type: 'password' }
+<div class="main">
+  <form [formGroup]="myForm" class="form">
+    <h1 class="form-title">Register</h1>
+    <ng-container
+      *ngFor="
+        let fieldsArr of [
+          [
+            { name: 'Username', controlName: 'username', type: 'text' },
+            { name: 'Password', controlName: 'password', type: 'password' }
+          ]
         ]
-      ]
-    "
-  >
-    <ng-container *ngFor="let field of fieldsArr">
-      <label for="{{ field.controlName }}">
-        <span>*</span> {{ field.name }}
-      </label>
-      <input
-        type="{{ field.type }}"
-        [formControlName]="field.controlName"
-        id="{{ field.controlName }}"
-        required
-      />
-      <br />
+      "
+    >
+      <ng-container *ngFor="let field of fieldsArr">
+        <label for="{{ field.controlName }}">
+          <span>*</span> {{ field.name }}
+        </label>
+        <input
+          type="{{ field.type }}"
+          [formControlName]="field.controlName"
+          id="{{ field.controlName }}"
+          class="form-input"
+          required
+        />
+        <br />
+      </ng-container>
     </ng-container>
-  </ng-container>
 
-  <ng-select [items]="subscriptionPlans" bindLabel="name" formControlName="userPlan" />
+    <label>
+      <span>*</span> Subscription Plan
+    </label>
+    <ng-select
+      [items]="subscriptionPlans"
+      bindLabel="name"
+      formControlName="userPlan"
+      class="ng-select"
+    />
 
-  <button (click)="register()">Register</button>
+    <button (click)="register()" class="form-button">Register</button>
 
-  <div class="question">
-    <span>Already have an account?</span>
-    <a routerLink="/login">Login</a>
-  </div>
-</form>
+    <div class="question">
+      <p>Already have an account?</p>
+      <a routerLink="/login">Login</a>
+    </div>
+  </form>
+</div>
