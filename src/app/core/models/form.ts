@@ -5,4 +5,5 @@ export default interface Form {
   length: number,
   idCountry: number,
   idRegion: number,
+  userPlan: string,
 }

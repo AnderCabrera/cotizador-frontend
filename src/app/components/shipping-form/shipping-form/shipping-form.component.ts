@@ -3,6 +3,8 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Observable } from 'rxjs';
 import Country from 'src/app/core/models/country';
 import Region from 'src/app/core/models/region';
+import User from 'src/app/core/models/user';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { CountriesService } from 'src/app/core/services/countries/countries.service';
 import { RegionsService } from 'src/app/core/services/regions/regions.service';
 import { ShippingService } from 'src/app/core/services/shipping/shipping.service';
@@ -19,12 +21,18 @@ export class ShippingFormComponent {
   private shippingService = inject(ShippingService);
   private countriesService = inject(CountriesService);
   private regionsService = inject(RegionsService);
+  private authService = inject(AuthService);
   countries: Observable<Country[]> = this.countriesService.getCountries();
   regions: Observable<Region[]> = this.regionsService.getRegions();
   @Output() shippingCost = new EventEmitter<number>();
 
+  currentUser: User | null = null;
 
   ngOnInit() {
+    this.authService.currentUser$.subscribe((user) => {
+      this.currentUser = user;
+    });
+
     this.myForm = this.fb.group({
       weight: ['', [Validators.required, Validators.min(0.1)]],
       width: ['', [Validators.required, Validators.min(0.1)]],
@@ -50,17 +58,20 @@ export class ShippingFormComponent {
     } = this.myForm.getRawValue();
 
     const obj = {
-      userPlan: ['Free', 'Premium', 'Super Premium'],
       weight,
       width,
       height,
       length,
       idCountry: idCountry.id,
       idRegion: idRegion.idRegion,
+      userPlan: this.currentUser?.userPlan || 'FREE',
     };
 
     this.shippingService.getShippingCosts(obj).subscribe((cost) => {
+      console.log(cost);
       this.shippingCost.emit(Number(cost));
     });
+
+    console.log(this.currentUser);
   }
 }
