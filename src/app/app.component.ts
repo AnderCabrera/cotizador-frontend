@@ -1,9 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { CountriesService } from './core/services/countries/countries.service';
-
-import Country from 'src/app/core/models/country';
-import Region from './core/models/region';
-import { RegionsService } from './core/services/regions/regions.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +7,5 @@ import { RegionsService } from './core/services/regions/regions.service';
 })
 
 export class AppComponent {
-  cost!: number;
 
-  ngOnInit() {
-  }
-
-  showCost(cost: number) {
-    this.cost = cost;
-  }
 }

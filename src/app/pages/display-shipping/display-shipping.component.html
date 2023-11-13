@@ -1,0 +1,21 @@
+<nav class="nav">
+  <span>CPS</span>
+  <a *ngIf="!(user$ | async)" routerLink="/login">
+    <span>Login</span>
+  </a>
+
+  <a *ngIf="user$ | async as user" routerLink="/login" (click)="logout()">
+    <span>Logout {{ user.username }}</span>
+  </a>
+</nav>
+
+<app-shipping-form (shippingCost)="showCost($event)" />
+
+<div *ngIf="cost" class="cost-display">
+  <span>Cost: </span>
+  <span *ngIf="!(user$ | async)"> FREE </span>
+  <span *ngIf="(user$ | async)?.userPlan === 'FREE'"> FREE </span>
+  <span *ngIf="(user$ | async)?.userPlan === 'PREMIUM'"> PREMIUM </span>
+  <span *ngIf="(user$ | async)?.userPlan === 'SUPER_PREMIUM'">SUPER PREMIUM</span>
+  {{ cost }}
+</div>
