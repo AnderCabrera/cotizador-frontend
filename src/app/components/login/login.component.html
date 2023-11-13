@@ -1,32 +1,36 @@
-<form [formGroup]="myForm">
-  <ng-container
-    *ngFor="
-      let fieldsArr of [
-        [
-          { name: 'Username', controlName: 'username', type: 'text' },
-          { name: 'Password', controlName: 'password', type: 'password' }
+<div class="main">
+  <form [formGroup]="myForm" class="form">
+    <h1 class="form-title">Login</h1>
+    <ng-container
+      *ngFor="
+        let fieldsArr of [
+          [
+            { name: 'Username', controlName: 'username', type: 'text' },
+            { name: 'Password', controlName: 'password', type: 'password' }
+          ]
         ]
-      ]
-    "
-  >
-    <ng-container *ngFor="let field of fieldsArr">
-      <label for="{{ field.controlName }}">
-        <span>*</span> {{ field.name }}
-      </label>
-      <input
-        type="{{ field.type }}"
-        [formControlName]="field.controlName"
-        id="{{ field.controlName }}"
-        required
-      />
-      <br>
+      "
+    >
+      <ng-container *ngFor="let field of fieldsArr">
+        <label for="{{ field.controlName }}">
+          <span>*</span> {{ field.name }}
+        </label>
+        <input
+          type="{{ field.type }}"
+          [formControlName]="field.controlName"
+          id="{{ field.controlName }}"
+          class="form-input"
+          required
+        />
+        <br />
+      </ng-container>
     </ng-container>
-  </ng-container>
 
-  <button (click)="login()">Login</button>
+    <button (click)="login()" class="form-button">Login</button>
 
-  <div class="question">
-    <span>Don't have any account yet?</span>
-    <a routerLink="/register">Register</a>
-  </div>
-</form>
+    <div class="question">
+      <p>Don't have any account yet?</p>
+      <a routerLink="/register">Register</a>
+    </div>
+  </form>
+</div>

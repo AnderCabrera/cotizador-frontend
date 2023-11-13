@@ -21,10 +21,6 @@ export class LoginComponent {
     });
   }
 
-  showData() {
-    console.log(this.myForm.value);
-  }
-
   login() {
     if (!this.myForm.valid) {
       return console.log('rellena los campos');;
