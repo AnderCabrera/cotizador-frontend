@@ -32,7 +32,7 @@ export class RegisterComponent {
 
   register() {
     if (!this.myForm.valid) {
-      return console.log('rellena los campos');;
+      return alert('Fill all fields');
     }
 
     const { username, userPlan, password } = this.myForm.getRawValue();

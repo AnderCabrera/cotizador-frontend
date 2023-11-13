@@ -17,7 +17,12 @@ export class AuthService {
     return this.http.post<UserLoginRequest>('/api/users/login', data).pipe(
       tap((user) => this.currentUserSubject.next(user)),
       catchError((err) => {
-        throw err;
+        if (err.status === 500) {
+          alert('Username or password incorrect');
+          throw new Error('Invalid credentials');
+        }
+
+        return throwError(() => err);
       }),
     );
   }
@@ -31,7 +36,7 @@ export class AuthService {
       tap((user) => this.currentUserSubject.next(user)),
       catchError((err) => {
         if (err.status === 400) {
-          alert('Username already exists');
+          alert('Username already in use');
           throw new Error('Username already exists');
         }
 

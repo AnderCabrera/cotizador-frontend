@@ -45,7 +45,7 @@ export class ShippingFormComponent {
 
   getShipmentCost() {
     if (!this.myForm.valid) {
-      return console.log('rellena los campos');;
+      return alert('Fill all fields');
     }
 
     const {

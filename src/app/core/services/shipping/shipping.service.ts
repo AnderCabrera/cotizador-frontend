@@ -9,6 +9,6 @@ export class ShippingService {
   private http = inject(HttpClient);
 
   getShippingCosts(data: Form) {
-    return this.http.post(`/api/countries/fee`, data);
+    return this.http.post(`/api/shipping/fee`, data);
   }
 }

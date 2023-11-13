@@ -23,7 +23,7 @@ export class LoginComponent {
 
   login() {
     if (!this.myForm.valid) {
-      return console.log('rellena los campos');;
+      return alert('Fill all fields');
     }
 
     const { username, password } = this.myForm.getRawValue();
@@ -34,7 +34,6 @@ export class LoginComponent {
     };
 
     this.authService.login(obj).subscribe((res) => {
-      console.log(res);
       this.router.navigate(['/']);
     });
   }
