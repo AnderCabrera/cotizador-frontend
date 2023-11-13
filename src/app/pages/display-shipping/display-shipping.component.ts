@@ -21,6 +21,5 @@ export class DisplayShippingComponent {
 
   public logout(): void {
     this.authService.logout();
-    alert('You have been logged out');
   }
 }

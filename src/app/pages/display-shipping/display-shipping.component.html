@@ -1,21 +1,61 @@
 <nav class="nav">
-  <span>CPS</span>
-  <a *ngIf="!(user$ | async)" routerLink="/login">
-    <span>Login</span>
+  <span class="company-name">CPS</span>
+  <h1 *ngIf="user$ | async as user" class="user-welcome">
+    Bienvenido {{ user.username }}
+  </h1>
+  <a *ngIf="!(user$ | async)" routerLink="/login" class="action-log">
+    <div class="">
+      <h4>Login</h4>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="login-icon"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
+        />
+      </svg>
+    </div>
   </a>
-
-  <a *ngIf="user$ | async as user" routerLink="/login" (click)="logout()">
-    <span>Logout {{ user.username }}</span>
+  <a
+    *ngIf="user$ | async"
+    routerLink="/login"
+    (click)="logout()"
+    class="action-log"
+  >
+    <div class="">
+      <h4>Logout</h4>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="login-icon"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
+        />
+      </svg>
+    </div>
   </a>
 </nav>
 
 <app-shipping-form (shippingCost)="showCost($event)" />
 
-<div *ngIf="cost" class="cost-display">
-  <span>Cost: </span>
-  <span *ngIf="!(user$ | async)"> FREE </span>
-  <span *ngIf="(user$ | async)?.userPlan === 'FREE'"> FREE </span>
-  <span *ngIf="(user$ | async)?.userPlan === 'PREMIUM'"> PREMIUM </span>
-  <span *ngIf="(user$ | async)?.userPlan === 'SUPER_PREMIUM'">SUPER PREMIUM</span>
-  {{ cost }}
+<div class="main">
+  <div *ngIf="cost" class="cost-display">
+    <span *ngIf="!(user$ | async)" class="usertype"> Cost as <span style="color: tomato;">Free</span> user </span>
+    <span *ngIf="(user$ | async)?.userPlan === 'FREE'" class="usertype"> Cost as <span style="color: tomato;"><b>Free</b></span> user </span>
+    <span *ngIf="(user$ | async)?.userPlan === 'PREMIUM'" class="usertype"> Cost as <span style="color: rgb(255, 196, 0);"><b>Premium</b></span> user </span>
+    <span *ngIf="(user$ | async)?.userPlan === 'SUPER_PREMIUM'" class="usertype"> Cost as <span style="color: rgb(1, 209, 1);"><b>Super premium</b></span> user </span>
+    <span class="cost">{{ cost }}</span>
+  </div>
 </div>

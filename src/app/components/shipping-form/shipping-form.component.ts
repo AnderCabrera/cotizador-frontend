@@ -68,10 +68,7 @@ export class ShippingFormComponent {
     };
 
     this.shippingService.getShippingCosts(obj).subscribe((cost) => {
-      console.log(cost);
       this.shippingCost.emit(Number(cost));
     });
-
-    console.log(this.currentUser);
   }
 }

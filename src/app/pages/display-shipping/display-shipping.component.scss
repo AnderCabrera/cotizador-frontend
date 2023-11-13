@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(244, 131, 0);
+  padding: 5px 20px;
+  margin-bottom: 10px;
+
+  .company-name {
+    font-size: 2em;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .action-log {
+    text-decoration: none;
+    color: white;
+
+    &:hover {
+      color: #eee;
+    }
+
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 1.3em;
+        height: 1.5em;
+      }
+    }
+  }
+
+  .user-welcome {
+    color: white;
+    font-weight: 600;
+  }
+
+  .cost-display {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2em;
+  }
+}
+
+// Main
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .cost-display {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 0;
+    margin: 20px 0px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .usertype {
+      font-size: 1.5em;
+    }
+
+    .cost {
+      font-size: 2em;
+      font-weight: 600;
+      color: rgb(244, 131, 0);
+    }
+  }
+}
