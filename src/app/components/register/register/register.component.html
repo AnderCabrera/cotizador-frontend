@@ -1,1 +1,34 @@
-<form ></form>
+<form [formGroup]="myForm">
+  <ng-container
+    *ngFor="
+      let fieldsArr of [
+        [
+          { name: 'Username', controlName: 'username', type: 'text' },
+          { name: 'Password', controlName: 'password', type: 'password' }
+        ]
+      ]
+    "
+  >
+    <ng-container *ngFor="let field of fieldsArr">
+      <label for="{{ field.controlName }}">
+        <span>*</span> {{ field.name }}
+      </label>
+      <input
+        type="{{ field.type }}"
+        [formControlName]="field.controlName"
+        id="{{ field.controlName }}"
+        required
+      />
+      <br />
+    </ng-container>
+  </ng-container>
+
+  <ng-select [items]="subscriptionPlans" bindLabel="name" formControlName="userPlan" />
+
+  <button (click)="register()">Register</button>
+
+  <div class="question">
+    <span>Already have an account?</span>
+    <a routerLink="/login">Login</a>
+  </div>
+</form>

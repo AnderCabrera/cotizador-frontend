@@ -26,6 +26,10 @@ export class LoginComponent {
   }
 
   login() {
+    if (!this.myForm.valid) {
+      return console.log('rellena los campos');;
+    }
+
     const { username, password } = this.myForm.getRawValue();
 
     const obj = {
